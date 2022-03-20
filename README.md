@@ -1,6 +1,6 @@
 ## Desafio "Notas finales"
 
-|Bootcamp 2022|Modulo 2 Fundamentos de Desarrollo web|
+|Bootcamp 2022 Modulo 2 Fundamentos de Desarrollo web||
 |----|-----|
 |**Unidad**|Javascript|
 |**Día Bootcamp**|15/?|
