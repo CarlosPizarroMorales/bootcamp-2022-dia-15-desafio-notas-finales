@@ -1,25 +1,20 @@
 const parciales = 3;
 const perfil = ['Desarrollo web'];
-const data = [['HTML'], ['CSS'], ['Javascript']];
+const ramos = [['HTML'], ['CSS'], ['Javascript']];
 perfil.push(prompt('Ingrese el nombre del alumno:'));
 
-// ciclo que solicita las notas parciales de cada ramo.
-// Se utilizan los datos del arreglo data y la posición del 
-// índice del loop para pushear las notas. 
-for (let i = 0; i < (parciales * data.length); i++) {
-  let parcial = prompt(`Ingrese la nota ${(i % parciales) + 1} del ramo ${data[Math.trunc(i / parciales)][0]}.`, 1);
-  data[Math.trunc(i / 3)].push(Number(parcial));
+// Loop que solicita las notas parciales y las pushea a ramos como Number()
+for (let i = 0; i < (parciales * ramos.length); i++) {
+  let parcial = prompt(`Ingrese la nota ${(i % parciales) + 1} del ramo ${ramos[Math.trunc(i / parciales)][0]}.`, 1);
+  ramos[Math.trunc(i / 3)].push(Number(parcial));
 }
 
 // Llena elementos HTML de parrafo con datos del alumno/carrera
-document.querySelectorAll('p').forEach((e, i) => e.innerText += (perfil[i] + '\t'));
+document.querySelectorAll('h5').forEach((e, i) => e.innerText += (perfil[i]));
 
-// Calcula promedios sin almacenarlos y llena tabla
-const tabla = document.querySelectorAll('td');
-for (let i = 0; i < parciales; i++) {
-  data[i].push((data[i][1] + data[i][2] + data[i][3]) / parciales);
-  tabla[(i * 4)].innerText = data[i][1];
-  tabla[(i * 4) + 1].innerText = data[i][2];
-  tabla[(i * 4) + 2].innerText = data[i][3];
-  tabla[(i * 4) + 3].innerText = data[i][4].toFixed(1);
-}
+// Calcula promedios y llena tabla. Leer assets/js/README.md para detalles. 
+document.querySelectorAll('td').forEach((e, i) => {
+  (i + 1) % 4 === 0 
+    ? e.innerText = ((ramos[Math.trunc(i/4)][(i % 4) - 2] + ramos[Math.trunc(i/4)][(i % 4) - 1] + ramos[Math.trunc(i/4)][i % 4]) / 3).toFixed(1)
+    : e.innerText = ramos[Math.trunc(i / 4)][(i % 4) + 1];
+});
