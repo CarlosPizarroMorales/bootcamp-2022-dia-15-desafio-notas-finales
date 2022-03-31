@@ -12,7 +12,7 @@ for (let i = 0; i < (parciales * ramos.length); i++) {
 // Llena elementos HTML de parrafo con datos del alumno/carrera
 document.querySelectorAll('h5').forEach((e, i) => e.innerText += (perfil[i]));
 
-// Calcula promedios y llena tabla. Leer assets/js/README.md para detalles. 
+// Calcula promedios y llena tabla. Leer assets/README.md para detalles. 
 document.querySelectorAll('td').forEach((e, i) => {
   (i + 1) % 4 === 0 
     ? e.innerText = ((ramos[Math.trunc(i/4)][(i % 4) - 2] + ramos[Math.trunc(i/4)][(i % 4) - 1] + ramos[Math.trunc(i/4)][i % 4]) / 3).toFixed(1)
